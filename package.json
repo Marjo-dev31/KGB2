@@ -15,5 +15,8 @@
     "dev": "NODE_ENV=dev nodemon index.js"
   },
   "author": "me",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
+  }
 }
