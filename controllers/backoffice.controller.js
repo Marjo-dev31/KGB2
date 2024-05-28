@@ -6,6 +6,6 @@ database.query(QUERYMISSIONS.SELECT_MISSIONS, (err,results)=>{
 if(!results) {
     res.status(200).send('No results')
 }
-res.status(200).send(results)
+res.status(200).render('../src/backoffice', {missions: results})
 })
 };

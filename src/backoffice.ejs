@@ -1,0 +1,21 @@
+<%- include('head.ejs') %> 
+<%- include('header.ejs')%>
+<main>
+    <% for (const mission of missions) { %> 
+ <div>Missions: <%= mission.title %></div>
+ <div>Description: <%= mission.description %></div>
+ <div>Nom de code: <%= mission.codename %></div>
+ <div>Pays: <%= mission.id_origin %></div>
+ <div>Planque: <%= mission.id_hideout %></div>
+ <div>Agent: <%= mission.id_agent %></div>
+ <div>Contact: <%= mission.id_contact %></div>
+ <div>Cible: <%= mission.id_target %></div>
+ <div>Type: <%= mission.type %></div>
+ <div>Statut: <%= mission.status %></div>
+ <div>Date de début: <%= mission.start_date %></div>
+ <div>date de fin: <%= mission.end_date %></div>
+ <% } %>
+</main>
+<footer></footer>
+</body>
+</html>
