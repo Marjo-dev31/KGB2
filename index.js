@@ -1,5 +1,6 @@
 import  express  from "express";
 import  dotenv  from "dotenv";
+import backofficeRoutes from "./routes/backoffice.route.js";
 
 
 dotenv.config();
@@ -18,6 +19,7 @@ app.get('/', (req, res)=> {
     res.render('index')
 });
 
+app.use('/backoffice', backofficeRoutes)
 
 
 app.listen(PORT, ()=> {

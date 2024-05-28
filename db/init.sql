@@ -75,3 +75,42 @@ CREATE TABLE missions (
     FOREIGN KEY (id_target) REFERENCES targets(id),
     FOREIGN KEY (id_origin) REFERENCES origins(id)
 );
+
+
+INSERT INTO specialities VALUES
+(default, "assassinat"),
+(default, "surveillance"),
+(default, "infiltration");
+
+INSERT INTO origins values
+(default, 'france', 'français'),
+(default, 'angleterre', 'anglais'),
+(default, 'irlande', 'irlandais'),
+(default, 'ecosse', 'ecossais');
+
+INSERT INTO agents values
+(default, 'dupont', 'antoine', '19961115', '9', (select origins.id from origins where origins.nationality='français'), (select specialities.id from specialities where specialities.name='infiltration')),
+(default, 'kinghorn', 'blair', '19970118', '15', (select origins.id from origins where origins.nationality='ecossais'), (select specialities.id from specialities where specialities.name='surveillance')),
+(default, 'willis', 'jack', '19961224', '7', (select origins.id from origins where origins.nationality='anglais'), (select specialities.id from specialities where specialities.name='assassinat'));
+
+INSERT INTO targets values
+(default, 'jamisson', 'gibson-park', '19920223', 'demidemelee', (select origins.id from origins where origins.nationality = 'irlandais')),
+(default, 'sebastien', 'chabal', '19771208', 'anesthesiste', (select origins.id from origins where origins.nationality = 'français'));
+
+INSERT INTO hideout values
+(default, 'ernest wallon', 'rue du stade toulouse',(select origins.id from origins where origins.country='france'), 'stade'),
+(default, 'birmingham', 'rue du chateau londres',(select origins.id from origins where origins.country='angleterre'), 'maison');
+
+INSERT INTO contacts values
+(default, 'mola', 'ugo', '19730514', 'coach', (select origins.id from origins where origins.nationality='français')),
+(default, 'wilkinson', 'jonny', '19790525', 'metronome', (select origins.id from origins where origins.nationality='anglais'));
+
+
+insert into missions values
+(default, 'ingérance au sein de la FFR', 'Vous devez vous infiltrez afin de surveiller les transactions suspectes', 'champion','en préparation', 'surveillance', 
+(select id from agents where agents.firstname ='blair'), 
+(select id from contacts where firstname ='ugo'),
+(select id from hideout where codename ='birmingham' ), 
+(select id from specialities where name ='surveillance'),
+(select id from targets where firstname ='jack'), 
+(select id from origins where country ='france'), '20240901', '20250630');
