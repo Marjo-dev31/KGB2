@@ -58,7 +58,7 @@ CREATE TABLE missions (
     title VARCHAR(255),
     description VARCHAR(255),
     codename VARCHAR(255),
-    status BOOLEAN,
+    status VARCHAR(255),
     type VARCHAR(255),
     id_agent VARCHAR(36),
     id_contact VARCHAR(36),
@@ -112,5 +112,5 @@ insert into missions values
 (select id from contacts where firstname ='ugo'),
 (select id from hideout where codename ='birmingham' ), 
 (select id from specialities where name ='surveillance'),
-(select id from targets where firstname ='jack'), 
+(select id from targets where firstname ='jamisson'), 
 (select id from origins where country ='france'), '20240901', '20250630');
