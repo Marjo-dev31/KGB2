@@ -12,7 +12,7 @@ Content-Type: application/json
     "status":"En préparation",
     "type":"surveillance",
     "id_agent":"64776736-1d03-11ef-bb78-58a023d3f752",
-    "id-contact":"7e9edcd6-1d03-11ef-bb78-58a023d3f752",
+    "id_contact":"7e9edcd6-1d03-11ef-bb78-58a023d3f752",
     "id_hideout":"7e9bdf2f-1d03-11ef-bb78-58a023d3f752",
     "id_speciality":"ca9acb8f-1d02-11ef-bb78-58a023d3f752",
     "id_target":"7e99594d-1d03-11ef-bb78-58a023d3f752",
@@ -27,13 +27,13 @@ put http://localhost:8000/backoffice/f78251d0-1e9d-11ef-87ab-58a023d3f752
 Content-Type: application/json
 
 {
-    "title":"Le doublé pour juin 2024",
+    "title":"Le doublé pour 2024",
     "description":"Gagner le top14 en surveillance et analysant les équipes adversaires comme Bordeaux",
     "codename":"velodrome",
     "status":"En préparation",
     "type":"surveillance",
     "id_agent":"64776736-1d03-11ef-bb78-58a023d3f752",
-    "id-contact":"7e9edcd6-1d03-11ef-bb78-58a023d3f752",
+    "id_contact":"7e9edcd6-1d03-11ef-bb78-58a023d3f752",
     "id_hideout":"7e9bdf2f-1d03-11ef-bb78-58a023d3f752",
     "id_speciality":"ca9acb8f-1d02-11ef-bb78-58a023d3f752",
     "id_target":"7e99594d-1d03-11ef-bb78-58a023d3f752",
