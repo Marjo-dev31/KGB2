@@ -21,6 +21,9 @@ app.get('/', (req, res)=> {
 
 app.use('/backoffice', backofficeRoutes)
 
+app.use('/login', (req,res)=> {
+    res.render('login')
+})
 
 app.listen(PORT, ()=> {
     console.log(`It's alive on port ${PORT}`)
