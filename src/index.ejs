@@ -1,7 +1,8 @@
 <%- include('head.ejs')  %> 
+<body>
     <%- include('./header') %> 
     <main class="my-8 mx-8">
-      <div class="relative overflow-x-auto">
+      <!-- <div class="relative overflow-x-auto">
       <table class="table-auto w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
@@ -37,7 +38,23 @@
           </tr>
         </tbody>
       </table>
-      </div>
+      </div> -->
+      <% for (const mission of missions) { %> 
+        <ul class="my-6 text-center">
+ <li class="font-bold">Missions: <%= mission.title %></li>
+ <li>Description: <%= mission.description %></li>
+ <li>Nom de code: <%= mission.codename %></li>
+ <li>Pays: <%= mission.id_origin %></li>
+ <li>Planque: <%= mission.id_hideout %></li>
+ <li>Agent: <%= mission.id_agent %></li>
+ <li>Contact: <%= mission.id_contact %></li>
+ <li>Cible: <%= mission.id_target %></li>
+ <li>Type: <%= mission.type %></li>
+ <li>Statut: <%= mission.status %></li>
+ <li>Date de début: <%= mission.start_date %></li>
+ <li>date de fin: <%= mission.end_date %></li>
+        </ul>
+        <% } %>
     </main>
     <footer></footer>
   </body>

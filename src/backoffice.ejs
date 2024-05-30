@@ -1,24 +1,116 @@
 <%- include('head.ejs') %> 
-</head>
 <body>
 <%- include('header.ejs')%>
 <main>
-    <% for (const mission of missions) { %> 
-        <ul class="my-6 text-center">
- <li class="font-bold">Missions: <%= mission.title %></li>
- <li>Description: <%= mission.description %></li>
- <li>Nom de code: <%= mission.codename %></li>
- <li>Pays: <%= mission.id_origin %></li>
- <li>Planque: <%= mission.id_hideout %></li>
- <li>Agent: <%= mission.id_agent %></li>
- <li>Contact: <%= mission.id_contact %></li>
- <li>Cible: <%= mission.id_target %></li>
- <li>Type: <%= mission.type %></li>
- <li>Statut: <%= mission.status %></li>
- <li>Date de début: <%= mission.start_date %></li>
- <li>date de fin: <%= mission.end_date %></li>
-        </ul>
- <% } %>
+       <div class="w-full max-w-xs m-auto my-16">
+       <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 " for="title">
+                  Titre
+              </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" type="text" placeholder="Titre" required>
+              </div>
+              <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+                  Description
+                </label>
+                <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="description" type="text" required></textarea>
+              </div>
+              <div class="mb-4">
+                     <label class="block text-gray-700 text-sm font-bold mb-2 " for="country">
+                       Pays
+                   </label>
+                    <select name="country" id="country">
+                     <option value=""></option>
+                    </select>
+              </div>
+              <div class="mb-4">
+                     <label class="block text-gray-700 text-sm font-bold mb-2 " for="hideout">
+                       Planque
+                   </label>
+                    <select name="hideout" id="hideout">
+                     <option value=""></option>
+                    </select>
+              </div>
+              <div class="mb-4">
+                     <label class="block text-gray-700 text-sm font-bold mb-2 " for="agent">
+                       Agent
+                   </label>
+                    <select name="agent" id="agent">
+                     <option value=""></option>
+                    </select>
+              </div>
+              <div class="mb-4">
+                     <label class="block text-gray-700 text-sm font-bold mb-2 " for="contact">
+                       Contact
+                   </label>
+                    <select name="contact" id="contact">
+                     <option value=""></option>
+                    </select>
+              </div>
+              <div class="mb-4">
+                     <label class="block text-gray-700 text-sm font-bold mb-2 " for="target">
+                       Cible
+                   </label>
+                    <select name="target" id="target">
+                     <option value=""></option>
+                    </select>
+              </div>
+              <div class="mb-4">
+                     <label class="block text-gray-700 text-sm font-bold mb-2 " for="type">
+                       Type
+                   </label>
+                    <select name="type" id="type">
+                     <option value="">Surveillance</option>
+                    </select>
+              </div>
+              <div class="mb-4">
+                     <legend class="block text-gray-700 text-sm font-bold mb-2 ">
+                       Statuts
+                     </legend>
+                     <div><input class="" id="prepare" type="radio" value="prepare">
+                     <label class="text-gray-700 text-sm font-bold mb-2 " for="prepare">En préparation</label>
+                     </div>
+                     <div>
+                      <input class="" id="inprogress" type="radio" value="inprogress">
+                     <label class="text-gray-700 text-sm font-bold mb-2 " for="prepare">En cours</label>      
+                     </div>
+                     <div>
+                     <input class="" id="finish" type="radio" value="finish">
+                     <label class="text-gray-700 text-sm font-bold mb-2 " for="prepare">Terminée</label>       
+                     </div>
+                     <div>
+                     <input class="" id="failure" type="radio" value="failure">
+                     <label class="text-gray-700 text-sm font-bold mb-2 " for="prepare">Echec</label>     
+                     </div>
+              </div>
+              <div class="mb-4">
+                     <label class="block text-gray-700 text-sm font-bold mb-2 " for="start-date">
+                       Date de début
+                   </label>
+                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="start-date" type="text">
+              </div>
+              <div class="mb-4">
+                     <label class="block text-gray-700 text-sm font-bold mb-2 " for="end-date">
+                       Date de fin
+                   </label>
+                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="end-date" type="text">
+              </div>
+
+
+
+
+
+
+
+
+              <div class="flex items-center justify-between">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="submit-btn" type="button">
+                  Valider
+                </button>
+              </div>
+       </form>
+       </div>
 </main>
 <footer></footer>
 </body>

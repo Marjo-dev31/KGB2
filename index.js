@@ -1,6 +1,7 @@
 import  express  from "express";
 import  dotenv  from "dotenv";
-import backofficeRoutes from "./routes/backoffice.route.js";
+import backofficeRoutes from "./routes/mission.route.js";
+import missionRoutes from "./routes/mission.route.js";
 
 
 dotenv.config();
@@ -15,15 +16,15 @@ app.set("view engine", "ejs");
 
 app.set("views", "./src");
 
-app.get('/', (req, res)=> {
-    res.render('index')
-});
+app.get('/', missionRoutes);
 
-app.use('/backoffice', backofficeRoutes)
+app.use('/backoffice', (req,res)=>{
+    res.render('backoffice')
+});
 
 app.use('/login', (req,res)=> {
     res.render('login')
-})
+});
 
 app.listen(PORT, ()=> {
     console.log(`It's alive on port ${PORT}`)
