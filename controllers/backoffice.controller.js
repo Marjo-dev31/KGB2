@@ -29,12 +29,12 @@ database.query(QUERYMISSIONS.SELECT_MISSIONS, [req.params.id], (error, results)=
     if(!results[0]){
         res.status(200).render('404')
     }
+    
     database.query(QUERYMISSIONS.UPDATEMISSION, [...Object.values(req.body), req.params.id], (err,results)=>{
-        const newMission = req.body
-        if(err){
+       if(err){
           res.status(500).render('../src/500.ejs')
         }
-        res.status(200).send({newMission}) 
+        res.status(200).send({...req.body}) 
     })
 } )
 }
