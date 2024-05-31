@@ -2,43 +2,6 @@
 <body>
     <%- include('./header') %> 
     <main class="my-8 mx-8">
-      <!-- <div class="relative overflow-x-auto">
-      <table class="table-auto w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr>
-            <th>Titre</th>
-            <th>Description</th>
-            <th>Nom de code</th>
-            <th>Pays</th>
-            <th>Agent</th>
-            <th>Contact</th>
-            <th>Type</th>
-            <th>Planque</th>
-            <th>Specialité</th>
-            <th>Date de début</th>
-            <th>Date de fin</th>
-            <th>Statuts</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-            <td>Malcolm Lockyer</td>
-            <td>1961</td>
-          </tr>
-          <tr>
-            <td>Witchy Woman</td>
-            <td>The Eagles</td>
-            <td>1972</td>
-          </tr>
-          <tr>
-            <td>Shining Star</td>
-            <td>Earth, Wind, and Fire</td>
-            <td>1975</td>
-          </tr>
-        </tbody>
-      </table>
-      </div> -->
       <% for (const mission of missions) { %> 
         <ul class="my-6 text-center">
  <li class="font-bold">Missions: <%= mission.title %></li>
