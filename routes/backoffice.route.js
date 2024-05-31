@@ -1,5 +1,5 @@
 import express from 'express';
-import { getMissions, addMission, updateMission } from '../controllers/backoffice.controller.js';
+import { getMissions, addMission, updateMission, deleteMission } from '../controllers/backoffice.controller.js';
 
 const backofficeRoutes = express.Router();
 
@@ -9,5 +9,6 @@ backofficeRoutes.route('/')
 
 backofficeRoutes.route('/:id')
 .put(updateMission)
+.delete(deleteMission)
 
 export default backofficeRoutes;

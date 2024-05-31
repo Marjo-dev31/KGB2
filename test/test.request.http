@@ -28,7 +28,7 @@ Content-Type: application/json
 
 {
     "title":"Le doublé pour 2024",
-    "description":"Gagner le top14 en surveillance et analysant les équipes adversaires comme Bordeaux",
+    "description":"Gagner le top14 en surveillance et analysant le jeu des équipes adversaires",
     "codename":"velodrome",
     "status":"En préparation",
     "type":"surveillance",
@@ -41,3 +41,7 @@ Content-Type: application/json
     "start_date":"2023-05-26",
     "end_date":"2023-06-28"
 }
+
+###
+
+delete  http://localhost:8000/backoffice/f78251d0-1e9d-11ef-87ab-58a023d3f752
