@@ -1,8 +1,8 @@
 import database from '../db/mysql.js';
 import QUERYMISSIONS from '../query/mission.query.js';
 
-export const getMissions = (req, res) => {
-database.query(QUERYMISSIONS.SELECT_MISSIONS, (err,results)=>{
+export const getMissionsDetails = (req, res) => {
+database.query(QUERYMISSIONS.SELECT_MISSIONS_DETAILS, (err,results)=>{
     if(err){
         res.status(500).render('../src/500.ejs')
     }

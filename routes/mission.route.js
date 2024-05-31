@@ -1,9 +1,9 @@
 import express from 'express';
-import { getMissions } from '../controllers/mission.controller.js';
+import { getMissionsDetails } from '../controllers/mission.controller.js';
 
 const missionRoutes = express.Router();
 
 missionRoutes.route('/')
-.get(getMissions);
+.get(getMissionsDetails);
 
 export default missionRoutes;
