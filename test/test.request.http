@@ -45,3 +45,34 @@ Content-Type: application/json
 ###
 
 delete  http://localhost:8000/backoffice/f78251d0-1e9d-11ef-87ab-58a023d3f752
+
+###
+
+post http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "firstname":"Mathys",
+    "lastname":"Lebel",
+    "mail":"mathyslebel@test.com",
+    "isAdmin": false,
+    "password":"Mathys31!" 
+}
+
+
+###
+
+put http://localhost:8000/users/6659d462dda961bc37af4b48
+Content-Type: application/json
+
+{
+    "firstname":"Thomas",
+    "lastname":"Ramos",
+    "mail":"thomasramos@test.com",
+    "isAdmin": true,
+    "password":"Totom31!" 
+}
+
+###
+
+ get http://localhost:8000/users/6659d462dda961bc37af4b48

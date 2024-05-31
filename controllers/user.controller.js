@@ -1,5 +1,5 @@
-import User from '../models/user.model.js'
-
+import User from '../models/user.model.js';
+import {hash} from 'bcrypt';
 
 export const getUsers = async (req,res)=>{
     try {
@@ -16,29 +16,32 @@ export const getUsers = async (req,res)=>{
 
 export const addUser = async (req,res)=>{
     try {
+        const hashPassword = await hash(req.body.password, 10);
         const user = await User.create({
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             mail: req.body.mail,
             isAdmin: req.body.isAdmin,
-            password: '',
+            password: hashPassword,
         });
-            res.status(200).send({user})
+            res.status(200).send({user});
     } catch(error) {
-        res.status(500).render('../src/500.ejs', error.message)
+        res.status(500).render('../src/500.ejs', error.message);
     }
 };
 
 
 export const updateUser = async (req,res)=>{
     try {
-     const user = await User.findByIdAndUpdate({_id:req.params.id},{
+    const hashPassword = await hash(req.body.password, 10);
+    const user = await User.findByIdAndUpdate(req.params.id, {$set:{
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         mail: req.body.mail,
         isAdmin: req.body.isAdmin,
-    });
-    if(!user[0]){
+        password: hashPassword
+    }}, {new:true});
+        if(!user){
         res.status(200).send(`User by ${req.params.id} no found`)
         return
     }
@@ -52,7 +55,7 @@ export const updateUser = async (req,res)=>{
 export const deleteUser = async (req,res) => {
     try {
        const user = await User.findByIdAndDelete({_id: req.params.id})
-        if(!user[0]){
+        if(!user){
             res.status(200).send(`User by ${req.params.id} no found`)
             return
         }
@@ -60,4 +63,10 @@ export const deleteUser = async (req,res) => {
     } catch(error) {
         res.status(500).render('../src/500.ejs') 
     }
+}
+
+
+export const getUserById = async (req,res)=> {
+   const user = await User.findById(req.params.id);
+   res.send({user})
 }
