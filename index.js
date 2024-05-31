@@ -3,8 +3,9 @@ import  dotenv  from "dotenv";
 import missionRoutes from "./routes/mission.route.js";
 import backofficeRoutes from "./routes/backoffice.route.js";
 import cors from 'cors';
-import connectDB from "./config/mongodb.config.js";
+import connectDB from "./db/mongo.js";
 import loginRoutes from "./routes/login.route.js";
+import userRoutes from "./routes/user.route.js";
 
 dotenv.config();
 const PORT = process.env.SERVER_PORT || 8000;
@@ -31,7 +32,7 @@ app.use('/backoffice', backofficeRoutes)
 
 app.use('/login', loginRoutes)
 
-app.use
+app.use('/users', userRoutes)
 
 app.listen(PORT, ()=> {
     connectDB().then(()=> {
