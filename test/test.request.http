@@ -93,3 +93,4 @@ delete http://localhost:8000/users/6659d462dda961bc37af4b48
 
 ###
 
+get http://localhost:8000/backoffice
