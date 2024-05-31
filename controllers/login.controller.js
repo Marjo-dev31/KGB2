@@ -3,14 +3,12 @@ import User from '../models/user.model.js'
 
 export const login = async (req,res)=>{
  try {
-  console.log('toto')
    const user = await User.findOne({mail: req.body.mail})
-   console.log(user)
     if(!user){
         res.status(200).send(`User no found`)
         return
     }
-   const passwordIsValid = await compare(req.body.password,user.password);
+   const passwordIsValid = compare(req.body.password,user.password);
    if(!passwordIsValid){
     res.status(200).send('Please verify your credentials!')
     return
