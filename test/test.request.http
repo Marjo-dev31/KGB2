@@ -75,8 +75,21 @@ Content-Type: application/json
 
 ###
 
- get http://localhost:8000/users
+get http://localhost:8000/users
+
+###
+post http://localhost:8000/login
+Content-Type: application/json
+
+ {
+    "mail":"mathyslebel@test.com",
+    "password":"Mathys31!"
+ }
+
 
 ###
 
- delete http://localhost:8000/users/6659d462dda961bc37af4b48
+delete http://localhost:8000/users/6659d462dda961bc37af4b48
+
+###
+
