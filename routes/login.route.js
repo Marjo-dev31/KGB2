@@ -4,6 +4,6 @@ import { login } from '../controllers/login.controller.js';
 const loginRoutes = express.Router();
 
 loginRoutes.route('/')
-post(login)
+.post(login)
 
 export default loginRoutes

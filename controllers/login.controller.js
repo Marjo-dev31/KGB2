@@ -1,4 +1,4 @@
-import database from '../db/mysql';
+import mongodb from '../db/mongo.js'
 
 export const login = (req,res)=>{
 
