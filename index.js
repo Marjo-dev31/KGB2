@@ -3,6 +3,8 @@ import  dotenv  from "dotenv";
 import missionRoutes from "./routes/mission.route.js";
 import backofficeRoutes from "./routes/backoffice.route.js";
 import cors from 'cors';
+import connectDB from "./config/mongodb.config.js";
+import loginRoutes from "./routes/login.route.js";
 
 dotenv.config();
 const PORT = process.env.SERVER_PORT || 8000;
@@ -21,16 +23,18 @@ app.set("views", "./src");
 
 app.use('/', missionRoutes);
 
-// app.use('/backoffice', (req,res)=>{
-//     res.render('backoffice')
-// });
-
 app.use('/backoffice', backofficeRoutes)
 
-app.use('/login', (req,res)=> {
-    res.render('login')
-});
+// app.use('/login', (req,res)=> {
+//     res.render('login')
+// });
+
+app.use('/login', loginRoutes)
+
+app.use
 
 app.listen(PORT, ()=> {
-    console.log(`It's alive on port ${PORT}`)
+    connectDB().then(()=> {
+        console.log(`It's alive on port ${PORT}`)
 })
+});
