@@ -3,13 +3,12 @@ const verifyToken = (req,res, next) =>{
       const verify = jwt.verify(req.cookies.jwt, ACCESS_TOKEN_SECRET)
       
       if(!verify){
-        res.status(200).render('index.ejs')
+        res.status(500).render('500.ejs')
+        return
       }
-      next()
-    } else{
-      res.status(500).render('500.ejs')
-    }
-    
+      res.status(200).render('index.ejs')
+      next()    
+}
 }
 
 export default verifyToken
