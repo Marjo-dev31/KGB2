@@ -1,13 +1,15 @@
-const verifyToken = (req,res, next) =>{
-    if(req.cookies.jwt){
-      const verify = jwt.verify(req.cookies.jwt, ACCESS_TOKEN_SECRET)
+import jwt from 'jsonwebtoken'
+
+const verifyToken = (req, res, next) =>{
+  const token = req.cookies.jwt
+    if(token){
+      const verify = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
       
       if(!verify){
         res.status(500).render('500.ejs')
         return
       }
-      res.status(200).render('index.ejs')
-      next()    
+  next()    
 }
 }
 
