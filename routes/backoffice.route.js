@@ -2,12 +2,13 @@ import express from 'express';
 import { getMissions, addMission, updateMission, deleteMission } from '../controllers/backoffice.controller.js';
 import verifyToken from '../middlewares/authorization.middleware.js';
 import isAdmin from '../middlewares/verifyrole.middleware.js';
+import checkCountry from '../controllers/checkcountry.controller.js';
 
 const backofficeRoutes = express.Router();
 
 backofficeRoutes.route('/')
 .get(verifyToken, getMissions)
-.post(verifyToken, isAdmin, addMission)
+.post(verifyToken, isAdmin, checkCountry, addMission)
 
 backofficeRoutes.route('/:id')
 .put(verifyToken, isAdmin, updateMission)
