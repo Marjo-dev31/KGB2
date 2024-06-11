@@ -7,6 +7,7 @@ import connectDB from "./db/mongo.js";
 import loginRoutes from "./routes/login.route.js";
 import userRoutes from "./routes/user.route.js";
 import cookieParser from "cookie-parser";
+import createJWT from "./middlewares/authentication.middleware.js";
 
 dotenv.config();
 const PORT = process.env.SERVER_PORT || 8000;
