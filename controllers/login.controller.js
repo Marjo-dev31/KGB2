@@ -7,8 +7,12 @@ export const login = async (req,res)=>{
     if(!user){
         res.status(200).send(`User no found`)
         return
-    }
-  const passwordIsValid = await bcrypt.compare(req.body.password, user.password);
+    };
+  const isAdmin = user.isAdmin
+    res.cookie('isAdmin', isAdmin, {
+        httpOnly: true
+    });
+  const passwordIsValid = await bcrypt.compare(req.body.password, user.password)
    if(!passwordIsValid){
     
      res.status(200).send('Please verify your credentials!')
