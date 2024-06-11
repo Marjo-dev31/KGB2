@@ -28,7 +28,7 @@ Content-Type: application/json
 
 {
     "title":"Le doublé pour 2024",
-    "description":"Gagner le top14 en surveillance et analysant le jeu des équipes adversaires",
+    "description":"Gagner le top14 en surveillant et analysant le jeu des équipes adversaires",
     "codename":"velodrome",
     "status":"En préparation",
     "type":"surveillance",
@@ -52,9 +52,9 @@ post http://localhost:8000/users
 Content-Type: application/json
 
 {
-    "firstname":"Mathys",
-    "lastname":"Lebel",
-    "mail":"mathyslebel@test.com",
+    "firstname":"Thomas",
+    "lastname":"Ramos",
+    "mail":"thomasramos@test.com",
     "isAdmin": false,
     "password":"Mathys31!" 
 }
@@ -68,7 +68,7 @@ Content-Type: application/json
 {
     "firstname":"Thomas",
     "lastname":"Ramos",
-    "mail":"thomasramos@test.com",
+    "mail":"",
     "isAdmin": true,
     "password":"Totom31!" 
 }
