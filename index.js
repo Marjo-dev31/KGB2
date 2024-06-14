@@ -7,7 +7,7 @@ import connectDB from "./db/mongo.js";
 import loginRoutes from "./routes/login.route.js";
 import userRoutes from "./routes/user.route.js";
 import cookieParser from "cookie-parser";
-import createJWT from "./middlewares/authentication.middleware.js";
+import bodyParser from 'body-parser'
 
 dotenv.config();
 const PORT = process.env.SERVER_PORT || 8000;
@@ -17,7 +17,7 @@ app.use(cors({ origin: '*'}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
-
+app.use(bodyParser.json())
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
