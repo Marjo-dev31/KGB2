@@ -1,60 +1,61 @@
 import database from '../db/mysql.js'
 import {QUERYCOUNTRY} from '../query/specification.query.js'
-import {QUERYSPECIALITY} from '../query/specification.query.js'
+import {QUERYSPECIALITY} from '../query/specification.query.js';
 
-const checkCountry = (req, res) => {
-   let agentCountry=[];
+let agentCountry;
+   let targetCountry; 
+   let contactCountry;
+   let hideoutCountry;
+   let agentSpeciality;
 
-   database.query(QUERYCOUNTRY.SELECT_COUNTRY_AGENT, [req.body.id_agent], (err,results)=>{
-     agentCountry = results
-   });
+const checkCountry = (req, res, next) => {
 
-   let targetCountry=[]; 
-   database.query(QUERYCOUNTRY.SELECT_COUNTRY_TARGET, [req.body.id_target], (err,results)=>{
-      targetCountry = results
-   });
-
-   let contactCountry=[];
-   database.query(QUERYCOUNTRY.SELECT_COUNTRY_CONTACT, [req.body.id_contact], (err,results)=>{
-      console.log(results,'toto')
-      contactCountry = results 
-   });
-
-   let hideoutCountry = []
-   database.query(QUERYCOUNTRY.SELECT_COUNTRY_HIDEOUT, [req.body.id_hideout], (err,results)=>{
-      hideoutCountry = results 
-   });
-
-   let agentSpeciality = []
-   database.query(QUERYSPECIALITY.SELECT_SPECIALITY_AGENT, [req.body.id_agent], (err,results)=>{
-      agentSpeciality = results 
+    const agent =  database.query(QUERYCOUNTRY.SELECT_COUNTRY_AGENT, [req.body.id_agent], (err,results)=>{
+    agentCountry = results[0].id_origin
+    
    })
 
-   const missionCountry = req.body.id_origin;
-   const missionSpeciality = req.body.id_speciality;
+    const target = database.query(QUERYCOUNTRY.SELECT_COUNTRY_TARGET, [req.body.id_target], (err,results)=>{
+    targetCountry = results[0].id_origin
+   })
+   
+   const contact = database.query(QUERYCOUNTRY.SELECT_COUNTRY_CONTACT, [req.body.id_contact], (err,results)=>{
+    contactCountry = results[0].id_origin
+   })
 
-   if(targetCountry === agentCountry){
-      res.send('1')
+   const hideout = database.query(QUERYCOUNTRY.SELECT_COUNTRY_HIDEOUT, [req.body.id_hideout], (err,results)=>{
+    hideoutCountry = results[0].id_origin 
+   })
+
+   const agentSpe = database.query(QUERYSPECIALITY.SELECT_SPECIALITY_AGENT, [req.body.id_agent], (err,results)=>{
+    agentSpeciality = results[0].id_speciality
+   })
+  
+    const missionCountry = req.body.id_origin;
+    const missionSpeciality = req.body.id_speciality;
+
+    setTimeout(() => {
+    if(targetCountry === agentCountry){
+      res.send('La nationalité de l\'agent ne peut pas être égale à la nationalité de la cible')
       return
-   }
+   };
    if(contactCountry !== missionCountry){
-      console.log(contactCountry, missionCountry)
-      res.send('2')
+      res.send('La nationalité du contact doit être identique à la nationalité de la mission')
       return
-   }
+   };
    
    if(hideoutCountry !== missionCountry) {
-      res.send('3')
+      res.send('La nationalité de la planque doit être identique à la nationalité de la mission')
       return
-   } 
+   };
    
    if (agentSpeciality !== missionSpeciality) {
-    res.status(500).render('../src/500.ejs')
+      res.send('La spécialité de l\'agent doit être identique à la spécialité de la mission')
     return
-   }
-
-    next()
-
+   };
+   
+   next()     
+    }, 1000);
 }
 
 export default checkCountry

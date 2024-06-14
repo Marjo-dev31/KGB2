@@ -62,15 +62,15 @@ Content-Type: application/json
 
 ###
 
-put http://localhost:8000/users/6659d462dda961bc37af4b48
+put http://localhost:8000/users/66685f9c397eb7c3116abf88
 Content-Type: application/json
 
 {
     "firstname":"Thomas",
     "lastname":"Ramos",
-    "mail":"",
+    "mail":"thomasramos@test.com",
     "isAdmin": true,
-    "password":"Totom31!" 
+    "password":"Mathys31!" 
 }
 
 ###
