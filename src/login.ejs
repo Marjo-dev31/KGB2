@@ -38,13 +38,11 @@
 </main>
 <footer></footer>
 <script>
-   
     let alertPasswordMessageElement = document.getElementById('alert-password');
     let passwordInputElement = document.getElementById('password');
     let alertUsernameMessageElement = document.getElementById('alert-username');
     let usernameInputElement = document.getElementById('username')
     let btnLoginElement = document.getElementById('loginBtn')
-
 
     btnLoginElement.addEventListener('click', ()=>{
         if(passwordInputElement.value){
@@ -62,11 +60,8 @@
         else {
             alertUsernameMessageElement.style.display = "block";
             usernameInputElement.classList.add('border-red-500');
-        }
-
-        
+        }    
     });
-
 </script>
 </body>
 </html>
