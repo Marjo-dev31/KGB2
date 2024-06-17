@@ -78,39 +78,39 @@ CREATE TABLE missions (
 
 
 INSERT INTO specialities VALUES
-(default, "assassinat"),
-(default, "surveillance"),
-(default, "infiltration");
+(DEFAULT, "assassinat"),
+(DEFAULT, "surveillance"),
+(DEFAULT, "infiltration");
 
-INSERT INTO origins values
-(default, 'france', 'français'),
-(default, 'angleterre', 'anglais'),
-(default, 'irlande', 'irlandais'),
-(default, 'ecosse', 'ecossais');
+INSERT INTO origins VALUES
+(DEFAULT, 'france', 'français'),
+(DEFAULT, 'angleterre', 'anglais'),
+(DEFAULT, 'irlande', 'irlandais'),
+(DEFAULT, 'ecosse', 'ecossais');
 
-INSERT INTO agents values
-(default, 'dupont', 'antoine', '19961115', '9', (select origins.id from origins where origins.nationality='français'), (select specialities.id from specialities where specialities.name='infiltration')),
-(default, 'kinghorn', 'blair', '19970118', '15', (select origins.id from origins where origins.nationality='ecossais'), (select specialities.id from specialities where specialities.name='surveillance')),
-(default, 'willis', 'jack', '19961224', '7', (select origins.id from origins where origins.nationality='anglais'), (select specialities.id from specialities where specialities.name='assassinat'));
+INSERT INTO agents VALUES
+(DEFAULT, 'dupont', 'antoine', '19961115', '9', (SELECT origins.id FROM origins WHERE origins.nationality='français'), (SELECT specialities.id FROM specialities WHERE specialities.name='infiltration')),
+(DEFAULT, 'kinghorn', 'blair', '19970118', '15', (SELECT origins.id FROM origins WHERE origins.nationality='ecossais'), (SELECT specialities.id FROM specialities WHERE specialities.name='surveillance')),
+(DEFAULT, 'willis', 'jack', '19961224', '7', (SELECT origins.id FROM origins WHERE origins.nationality='anglais'), (SELECT specialities.id FROM specialities WHERE specialities.name='assassinat'));
 
-INSERT INTO targets values
-(default, 'jamisson', 'gibson-park', '19920223', 'demidemelee', (select origins.id from origins where origins.nationality = 'irlandais')),
-(default, 'sebastien', 'chabal', '19771208', 'anesthesiste', (select origins.id from origins where origins.nationality = 'français'));
+INSERT INTO targets VALUES
+(DEFAULT, 'jamisson', 'gibson-park', '19920223', 'demidemelee', (SELECT origins.id FROM origins WHERE origins.nationality = 'irlandais')),
+(DEFAULT, 'sebastien', 'chabal', '19771208', 'anesthesiste', (SELECT origins.id FROM origins WHERE origins.nationality = 'français'));
 
-INSERT INTO hideout values
-(default, 'ernest wallon', 'rue du stade toulouse',(select origins.id from origins where origins.country='france'), 'stade'),
-(default, 'birmingham', 'rue du chateau londres',(select origins.id from origins where origins.country='angleterre'), 'maison');
+INSERT INTO hideout VALUES
+(DEFAULT, 'ernest wallon', 'rue du stade toulouse',(SELECT origins.id FROM origins WHERE origins.country='france'), 'stade'),
+(DEFAULT, 'birmingham', 'rue du chateau londres',(SELECT origins.id FROM origins WHERE origins.country='angleterre'), 'maison');
 
-INSERT INTO contacts values
-(default, 'mola', 'ugo', '19730514', 'coach', (select origins.id from origins where origins.nationality='français')),
-(default, 'wilkinson', 'jonny', '19790525', 'metronome', (select origins.id from origins where origins.nationality='anglais'));
+INSERT INTO contacts VALUES
+(DEFAULT, 'mola', 'ugo', '19730514', 'coach', (SELECT origins.id FROM origins WHERE origins.nationality='français')),
+(DEFAULT, 'wilkinson', 'jonny', '19790525', 'metronome', (SELECT origins.id FROM origins WHERE origins.nationality='anglais'));
 
 
-insert into missions values
-(default, 'ingérance au sein de la FFR', 'Vous devez vous infiltrez afin de surveiller les transactions suspectes', 'champion','en préparation', 'surveillance', 
-(select id from agents where agents.firstname ='blair'), 
-(select id from contacts where firstname ='ugo'),
-(select id from hideout where codename ='birmingham' ), 
-(select id from specialities where name ='surveillance'),
-(select id from targets where firstname ='jamisson'), 
-(select id from origins where country ='france'), '20240901', '20250630');
+INSERT INTO missions VALUES
+(DEFAULT, 'ingérance au sein de la FFR', 'Vous devez vous infiltrez afin de surveiller les transactions suspectes', 'champion','en préparation', 'surveillance', 
+(SELECT id FROM agents WHERE agents.firstname ='blair'), 
+(SELECT id FROM contacts WHERE firstname ='ugo'),
+(SELECT id FROM hideout WHERE codename ='birmingham' ), 
+(SELECT id FROM specialities WHERE name ='surveillance'),
+(SELECT id FROM targets WHERE firstname ='jamisson'), 
+(SELECT id FROM origins WHERE country ='france'), '20240901', '20250630');

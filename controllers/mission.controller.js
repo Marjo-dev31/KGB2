@@ -6,9 +6,9 @@ database.query(QUERYMISSIONS.SELECT_MISSIONS_DETAILS, (err,results)=>{
     if(err){
         res.status(500).render('../src/500.ejs')
     }
-if(!results) {
-    res.status(200).send('No results')
+    if(!results) {
+    res.status(200).render('../src/403.ejs')
 }
-res.status(200).render('../src/index', {missions: results})
+    res.status(200).render('../src/index', {missions: results})
 })
 };

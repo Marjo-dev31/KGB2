@@ -5,7 +5,6 @@ const QUERYCOUNTRY = {
     SELECT_COUNTRY_HIDEOUT: 'SELECT hideout.id_origin FROM hideout WHERE id = ?'
 }
 
-
 const QUERYSPECIALITY = {
     SELECT_SPECIALITY_AGENT: 'SELECT agents.id_speciality FROM agents WHERE id = ?'
 }
