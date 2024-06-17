@@ -7,7 +7,6 @@ import connectDB from "./db/mongo.js";
 import loginRoutes from "./routes/login.route.js";
 import userRoutes from "./routes/user.route.js";
 import cookieParser from "cookie-parser";
-import bodyParser from 'body-parser'
 
 dotenv.config();
 const PORT = process.env.SERVER_PORT || 8000;
@@ -17,25 +16,18 @@ app.use(cors({ origin: '*'}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
-app.use(bodyParser.json())
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.set("views", "./src");
 
-
-
 app.use('/', missionRoutes);
-
 app.use('/backoffice', backofficeRoutes)
-
-app.use('/login', loginRoutes)
-
-app.use('/signin', (req,res)=>{
+app.use('/signin', loginRoutes)
+app.use('/users', userRoutes)
+app.use('/login', (req,res)=>{
     res.render('login')
 })
-
-app.use('/users', userRoutes)
 
 app.listen(PORT, ()=> {
     connectDB().then(()=> {
