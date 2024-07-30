@@ -6,7 +6,7 @@ const verifyToken = (req, res, next) =>{
       const verify = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
       
       if(!verify){
-        res.status(500).render('500.ejs')
+        res.status(500).render('../src/errors/500.ejs')
         return
       }
   next()    

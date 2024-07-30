@@ -1,6 +1,6 @@
-<%- include('head.ejs') %>
+<%- include('../src/shared/head.ejs') %>
 <body>
-<%- include('header.ejs') %>
+<%- include('../src/shared/header.ejs') %>
 <main>
     <div class="w-full max-w-xs m-auto my-16">
         <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -36,7 +36,7 @@
         </p>
       </div> 
 </main>
-<footer></footer>
+<%- include('../src/shared/footer.ejs' ) %> 
 <script>
     let alertPasswordMessageElement = document.getElementById('alert-password');
     let passwordInputElement = document.getElementById('password');

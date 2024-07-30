@@ -10,7 +10,7 @@ export const getUsers = async (req,res)=>{
         } 
         res.status(200).send({users})
     } catch(error) {
-        res.status(500).render('../src/500.ejs', error.message)
+        res.status(500).render('../src/errors/500.ejs', error.message)
     }
 };
 
@@ -26,7 +26,7 @@ export const addUser = async (req,res)=>{
         });
             res.status(200).send({user});
     } catch(error) {
-        res.status(500).render('../src/500.ejs', error.message);
+        res.status(500).render('../src/errors/500.ejs', error.message);
     }
 };
 
@@ -47,7 +47,7 @@ export const updateUser = async (req,res)=>{
     }
     res.status(200).send({user})
     } catch(error) {
-        res.status(500).render('../src/500.ejs')
+        res.status(500).render('../src/errors/500.ejs')
     }
 };
 
@@ -61,7 +61,7 @@ export const deleteUser = async (req,res) => {
         }
         res.status(200).send('User deleted!')
     } catch(error) {
-        res.status(500).render('../src/500.ejs') 
+        res.status(500).render('../src/errors/500.ejs') 
     }
 }
 

@@ -1,6 +1,6 @@
-<%- include('head.ejs')  %> 
+<%- include('../src/shared/head.ejs')  %> 
 <body>
-    <%- include('header.ejs') %> 
+    <%- include('../src/shared/header.ejs') %> 
     <main class="my-8 mx-8">
       <% for (const mission of missions) { %> 
         <ul class="my-6 text-center">
@@ -19,6 +19,6 @@
         </ul>
         <% } %>
     </main>
-    <footer></footer>
+    <%- include('../src/shared/footer.ejs' ) %> 
   </body>
 </html>
