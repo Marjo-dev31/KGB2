@@ -4,70 +4,77 @@ USE kgbdb;
 
 CREATE TABLE specialities (
     id VARCHAR(36) PRIMARY KEY NOT NULL DEFAULT (UUID()),
-    name VARCHAR(255)
+    name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE origins (
     id VARCHAR(36) PRIMARY KEY NOT NULL DEFAULT (UUID()),
-    country VARCHAR(255),
-    nationality VARCHAR(255)
+    country VARCHAR(255) NOT NULL,
+    nationality VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE agents (
     id VARCHAR(36) PRIMARY KEY NOT NULL DEFAULT (UUID()),
-    lastname VARCHAR(255),
-    firstname VARCHAR(255),
-    birthday DATE,
-    code INT,
+    lastname VARCHAR(255) NOT NULL,
+    firstname VARCHAR(255) NOT NULL,
+    birthday DATE NOT NULL,
+    code INT NOT NULL,
     id_origin VARCHAR(36),
+    FOREIGN KEY (id_origin) REFERENCES origins(id) ON DELETE SET NULL
+);
+
+CREATE TABLE agents_specialities (
+    id_agent VARCHAR(36),
     id_speciality VARCHAR(36),
-    FOREIGN KEY (id_origin) REFERENCES origins(id) ON DELETE SET NULL,
-    FOREIGN KEY (id_speciality) REFERENCES specialities(id)
+    PRIMARY KEY (`id_agent`,`id_speciality`),
+    FOREIGN KEY (id_agent) REFERENCES agents(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_speciality) REFERENCES specialities(id) ON DELETE CASCADE
 );
 
 CREATE TABLE targets (
     id VARCHAR(36) PRIMARY KEY NOT NULL DEFAULT (UUID()),
-    lastname VARCHAR(255),
-    firstname VARCHAR(255),
-    birthday DATE,
-    codename VARCHAR(255),
+    lastname VARCHAR(255) NOT NULL,
+    firstname VARCHAR(255) NOT NULL,
+    birthday DATE NOT NULL,
+    codename VARCHAR(255) NOT NULL,
     id_origin VARCHAR(36),
     FOREIGN KEY (id_origin) REFERENCES origins(id) ON DELETE SET NULL
 );
 
 CREATE TABLE hideout (
     id VARCHAR(36) PRIMARY KEY NOT NULL DEFAULT (UUID()),
-    codename VARCHAR(255),
-    adress VARCHAR(255),
+    codename VARCHAR(255) NOT NULL,
+    adress VARCHAR(255) NOT NULL,
+    type VARCHAR(255) NOT NULL,
     id_origin VARCHAR(36),
     FOREIGN KEY (id_origin) REFERENCES origins(id) ON DELETE SET NULL
 );
 
 CREATE TABLE contacts (
     id VARCHAR(36) PRIMARY KEY NOT NULL DEFAULT (UUID()),
-    lastname VARCHAR(255),
-    firstname VARCHAR(255),
-    birthday DATE,
-    codename VARCHAR(255),
+    lastname VARCHAR(255) NOT NULL,
+    firstname VARCHAR(255) NOT NULL,
+    birthday DATE NOT NULL,
+    codename VARCHAR(255) NOT NULL,
     id_origin VARCHAR(36),
     FOREIGN KEY (id_origin) REFERENCES origins(id) ON DELETE SET NULL
 );
 
 CREATE TABLE missions (
     id VARCHAR(36) PRIMARY KEY NOT NULL DEFAULT (UUID()),
-    title VARCHAR(255),
-    description VARCHAR(255),
-    codename VARCHAR(255),
-    status VARCHAR(255),
-    type VARCHAR(255),
-    id_agent VARCHAR(36),
-    id_contact VARCHAR(36),
-    id_hideout VARCHAR(36),
-    id_speciality VARCHAR(36),
-    id_target VARCHAR(36),
-    id_origin VARCHAR(36),
-    start_date DATE,
-    end_date DATE,
+    title VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    codename VARCHAR(255) NOT NULL,
+    status VARCHAR(255) NOT NULL,
+    type VARCHAR(255) NOT NULL,
+    id_agent VARCHAR(36) NOT NULL,
+    id_contact VARCHAR(36) NOT NULL,
+    id_hideout VARCHAR(36) DEFAULT NULL,
+    id_speciality VARCHAR(36) NOT NULL,
+    id_target VARCHAR(36) NOT NULL,
+    id_origin VARCHAR(36) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
     FOREIGN KEY (id_agent) REFERENCES agents(id),
     FOREIGN KEY (id_contact) REFERENCES contacts(id),
     FOREIGN KEY (id_hideout) REFERENCES hideout(id),
@@ -78,9 +85,9 @@ CREATE TABLE missions (
 
 
 INSERT INTO specialities VALUES
-(DEFAULT, "assassinat"),
-(DEFAULT, "surveillance"),
-(DEFAULT, "infiltration");
+(DEFAULT, "armes à feu"),
+(DEFAULT, "agent double"),
+(DEFAULT, "hacker");
 
 INSERT INTO origins VALUES
 (DEFAULT, 'france', 'français'),
@@ -89,17 +96,17 @@ INSERT INTO origins VALUES
 (DEFAULT, 'ecosse', 'ecossais');
 
 INSERT INTO agents VALUES
-(DEFAULT, 'dupont', 'antoine', '19961115', '9', (SELECT origins.id FROM origins WHERE origins.nationality='français'), (SELECT specialities.id FROM specialities WHERE specialities.name='infiltration')),
-(DEFAULT, 'kinghorn', 'blair', '19970118', '15', (SELECT origins.id FROM origins WHERE origins.nationality='ecossais'), (SELECT specialities.id FROM specialities WHERE specialities.name='surveillance')),
-(DEFAULT, 'willis', 'jack', '19961224', '7', (SELECT origins.id FROM origins WHERE origins.nationality='anglais'), (SELECT specialities.id FROM specialities WHERE specialities.name='assassinat'));
+(DEFAULT, 'dupont', 'antoine', '19961115', '9', (SELECT origins.id FROM origins WHERE origins.nationality='français')),
+(DEFAULT, 'kinghorn', 'blair', '19970118', '15', (SELECT origins.id FROM origins WHERE origins.nationality='ecossais')),
+(DEFAULT, 'willis', 'jack', '19961224', '7', (SELECT origins.id FROM origins WHERE origins.nationality='anglais'));
 
 INSERT INTO targets VALUES
-(DEFAULT, 'jamisson', 'gibson-park', '19920223', 'demidemelee', (SELECT origins.id FROM origins WHERE origins.nationality = 'irlandais')),
-(DEFAULT, 'sebastien', 'chabal', '19771208', 'anesthesiste', (SELECT origins.id FROM origins WHERE origins.nationality = 'français'));
+(DEFAULT, 'gibson-park', 'jamisson',  '19920223', 'demidemelee', (SELECT origins.id FROM origins WHERE origins.nationality = 'irlandais')),
+(DEFAULT, 'chabal', 'sebastien', '19771208', 'anesthesiste', (SELECT origins.id FROM origins WHERE origins.nationality = 'français'));
 
 INSERT INTO hideout VALUES
-(DEFAULT, 'ernest wallon', 'rue du stade toulouse',(SELECT origins.id FROM origins WHERE origins.country='france'), 'stade'),
-(DEFAULT, 'birmingham', 'rue du chateau londres',(SELECT origins.id FROM origins WHERE origins.country='angleterre'), 'maison');
+(DEFAULT, 'ernest wallon', 'rue du stade toulouse', 'stade', (SELECT origins.id FROM origins WHERE origins.country='france')),
+(DEFAULT, 'birmingham', 'rue du chateau londres','maison', (SELECT origins.id FROM origins WHERE origins.country='angleterre'));
 
 INSERT INTO contacts VALUES
 (DEFAULT, 'mola', 'ugo', '19730514', 'coach', (SELECT origins.id FROM origins WHERE origins.nationality='français')),

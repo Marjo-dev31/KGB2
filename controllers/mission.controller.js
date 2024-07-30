@@ -4,11 +4,11 @@ import QUERYMISSIONS from '../query/mission.query.js';
 export const getMissionsDetails = (req, res) => {
 database.query(QUERYMISSIONS.SELECT_MISSIONS_DETAILS, (err,results)=>{
     if(err){
-        res.status(500).render('../src/500.ejs')
+      return res.status(500).render('../src/errors/500.ejs')
     }
     if(!results) {
-    res.status(200).render('../src/403.ejs')
+      return res.status(200).render('../src/errors/403.ejs')
 }
-    res.status(200).render('../src/index', {missions: results})
+   return res.status(200).render('../src/index', {missions: results})
 })
 };

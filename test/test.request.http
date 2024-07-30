@@ -78,7 +78,7 @@ Content-Type: application/json
 get http://localhost:8000/users
 
 ###
-post http://localhost:8000/login
+post http://localhost:8000/signin
 Content-Type: application/json
 
  {

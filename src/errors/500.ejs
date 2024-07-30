@@ -1,10 +1,10 @@
-<%- include('head', {pageTitle: 'Error!' }) %>
+<%- include('../shared/head.ejs', {pageTitle: 'Error!' }) %>
 <body>
-    <%-include('header.ejs') %>
+    <%-include('../shared/header.ejs') %>
     <main>
         <h1>Une erreur est survenue!</h1>
         <p>Oups ! Veuillez ré-essayer plus tard</p>
         <p><a class="btn" href="/">Retournez en lieu sûr!</a></p>
     </main>
+    <%- include('../shared/footer.ejs' ) %> 
 </body>
-<footer></footer>

@@ -10,11 +10,10 @@ const createJWT = (req, res, next) => {
     res.cookie('jwt', token, {
     httpOnly: true,
     // secure:true,
-    sameSite: Strict
    })
    next()
     } catch(error){
-        res.status(500).render('../src/500.ejs', error.message)
+        res.status(500).render('../src/errors/500.ejs', error.message)
     }
    
 } 

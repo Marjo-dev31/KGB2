@@ -5,7 +5,7 @@ export const login = async (req,res)=>{
  try {
   const user = await User.findOne({mail: req.body.mail})
     if(!user){
-        res.status(200).send(`User no found`)
+        res.status(200).send(`User not found`)
         return
     };
   const isAdmin = user.isAdmin
@@ -21,6 +21,6 @@ export const login = async (req,res)=>{
     res.status(200).render('../src/backoffice.ejs')
     
  } catch(error) {
-    res.status(500).render('../src/500.ejs', error.message)
+    res.status(500).render('../src/errors/500.ejs', error.message)
  }
 }
