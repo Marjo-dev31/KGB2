@@ -9,7 +9,7 @@ database.query(QUERYMISSIONS.SELECT_MISSIONS, (err,results)=>{
     if(!results) {
         return  res.status(200).send('No results')
 }
-        return res.status(200).render('../src/backoffice.ejs' ,{missions: results})
+        return res.status(200).render('../src/backoffice.ejs', {missions: results})
 })
 };
 
