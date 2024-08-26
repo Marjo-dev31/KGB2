@@ -18,7 +18,7 @@ export const login = async (req,res)=>{
      res.status(200).send('Please verify your credentials!')
      return 
     }
-    res.status(200).render('../src/backoffice.ejs')
+    res.status(200).render('../src/views/backoffice.ejs')
     
  } catch(error) {
     res.status(500).render('../src/errors/500.ejs', error.message)

@@ -9,6 +9,6 @@ database.query(QUERYMISSIONS.SELECT_MISSIONS_DETAILS, (err,results)=>{
     if(!results) {
       return res.status(200).render('../src/errors/403.ejs')
 }
-   return res.status(200).render('../src/index', {missions: results})
+   return res.status(200).render('../src/views/index.ejs', {missions: results})
 })
 };

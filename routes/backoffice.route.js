@@ -2,7 +2,7 @@ import express from 'express';
 import { getMissions, addMission, updateMission, deleteMission } from '../controllers/backoffice.controller.js';
 import verifyToken from '../middlewares/authorization.middleware.js';
 import isAdmin from '../middlewares/verifyrole.middleware.js';
-import checkCountry from '../controllers/specification.controller.js';
+import checkCountry from '../middlewares/specification.middleware.js';
 
 const backofficeRoutes = express.Router();
 

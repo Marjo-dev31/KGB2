@@ -17,7 +17,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
 
-app.use(express.static("public"));
+app.use(express.static('public'));
+app.use(express.static('public/scripts'))
 app.set("view engine", "ejs");
 app.set("views", "./src");
 
@@ -26,7 +27,7 @@ app.use('/backoffice', backofficeRoutes)
 app.use('/signin', loginRoutes)
 app.use('/users', userRoutes)
 app.use('/login', (req,res)=>{
-    res.render('login')
+    res.render('views/login')
 })
 
 app.listen(PORT, ()=> {
