@@ -6,38 +6,39 @@ post http://localhost:8000/backoffice
 Content-Type: application/json
 
 {
-    "title":"Le doublé",
-    "description":"Gagner le top14 en surveillance et analysant les équipes adversaires",
-    "codename":"velodrome",
-    "status":"En préparation",
-    "type":"surveillance",
-    "id_agent":"64776736-1d03-11ef-bb78-58a023d3f752",
-    "id_contact":"7e9edcd6-1d03-11ef-bb78-58a023d3f752",
-    "id_hideout":"7e9bdf2f-1d03-11ef-bb78-58a023d3f752",
-    "id_speciality":"ca9acb8f-1d02-11ef-bb78-58a023d3f752",
-    "id_target":"7e99594d-1d03-11ef-bb78-58a023d3f752",
-    "id_origin":"ca9d43fa-1d02-11ef-bb78-58a023d3f752",
+    "title":"vol de la coupe d'Europe",
+    "description":"La coupe gagnée samedi a été volé par le capitaine irlandais",
+    "codename":"et à la fin c'est Toulouse qui gagne",
+    "status":"Terminée",
+    "type":"assassinat",
+    "id_agent":"786c002f-3ad8-11ef-b84e-58a023d3f752",
+    "id_contact":"7876f404-3ad8-11ef-b84e-58a023d3f752",
+    "id_hideout":"7872b13d-3ad8-11ef-b84e-58a023d3f752",
+    "id_speciality":"78661c65-3ad8-11ef-b84e-58a023d3f752",
+    "id_target":"786f2400-3ad8-11ef-b84e-58a023d3f752",
+    "id_origin":"7869110d-3ad8-11ef-b84e-58a023d3f752",
     "start_date":"2023-05-26",
     "end_date":"2023-06-28"
 }
 
 ###
 
-put http://localhost:8000/backoffice/f78251d0-1e9d-11ef-87ab-58a023d3f752
+put http://localhost:8000/backoffice/6541694b-644e-11ef-b0ae-58a023d3f752
 Content-Type: application/json
 
+
 {
-    "title":"Le doublé pour 2024",
-    "description":"Gagner le top14 en surveillant et analysant le jeu des équipes adversaires",
-    "codename":"velodrome",
-    "status":"En préparation",
-    "type":"surveillance",
-    "id_agent":"64776736-1d03-11ef-bb78-58a023d3f752",
-    "id_contact":"7e9edcd6-1d03-11ef-bb78-58a023d3f752",
-    "id_hideout":"7e9bdf2f-1d03-11ef-bb78-58a023d3f752",
-    "id_speciality":"ca9acb8f-1d02-11ef-bb78-58a023d3f752",
-    "id_target":"7e99594d-1d03-11ef-bb78-58a023d3f752",
-    "id_origin":"ca9d43fa-1d02-11ef-bb78-58a023d3f752",
+    "title":"vol de la coupe d'Europe 2024",
+    "description":"La coupe gagnée samedi a été volé par le capitaine irlandais",
+    "codename":"et à la fin c'est Toulouse qui gagne !",
+    "status":"Terminée",
+    "type":"assassinat",
+    "id_agent":"786c002f-3ad8-11ef-b84e-58a023d3f752",
+    "id_contact":"7876f404-3ad8-11ef-b84e-58a023d3f752",
+    "id_hideout":"7872b13d-3ad8-11ef-b84e-58a023d3f752",
+    "id_speciality":"78661c65-3ad8-11ef-b84e-58a023d3f752",
+    "id_target":"786f2400-3ad8-11ef-b84e-58a023d3f752",
+    "id_origin":"7869110d-3ad8-11ef-b84e-58a023d3f752",
     "start_date":"2023-05-26",
     "end_date":"2023-06-28"
 }
@@ -82,7 +83,7 @@ post http://localhost:8000/signin
 Content-Type: application/json
 
  {
-    "mail":"mathyslebel@test.com",
+    "mail":"thomasramos@test.com",
     "password":"Mathys31!"
  }
 

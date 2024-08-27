@@ -6,7 +6,7 @@ const QUERYCOUNTRY = {
 }
 
 const QUERYSPECIALITY = {
-    SELECT_SPECIALITY_AGENT: 'SELECT agents.id_speciality FROM agents WHERE id = ?'
+    SELECT_SPECIALITY_AGENT: 'SELECT id_speciality FROM agents_specialities WHERE id_agent = ?'
 }
 
 export {QUERYCOUNTRY, QUERYSPECIALITY};
