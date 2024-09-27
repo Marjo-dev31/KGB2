@@ -9,7 +9,6 @@ const createJWT = (req, res, next) => {
         
     res.cookie('jwt', token, {
     httpOnly: true,
-    // secure:true,
    })
    next()
     } catch(error){
